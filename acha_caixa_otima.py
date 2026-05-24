@@ -68,3 +68,18 @@ def acha_caixa(dimensoes):
 
     return melhor
 
+
+def calcula_peso_cubado(dimensoes):
+    caixa = acha_caixa(dimensoes)  # ← guarda o retorno
+
+    if caixa is None:
+        print("Não foi possível calcular o peso cubado: nenhuma caixa encontrada.")
+        return None
+
+    fator_cubagem = 300  # padrão da indústria (cm³/kg)
+
+    peso_cubado = (caixa["c"] * caixa["l"] * caixa["a"]) / fator_cubagem
+
+    print(f"\nPeso cubado          : {round(peso_cubado, 2)} kg")
+
+    return round(peso_cubado, 2)
