@@ -6,9 +6,9 @@ Cliente seleciona a categoria do produto e a subcategoria
 VESTUARIO = [
     # div_l = divisor largura | div_c = divisor comprimento
     # mult_e = multiplicador de espessura para altura dobrada | comp = fator de compressão
-    {"id": 1, "nome": "Roupa Leve","exemplos": "Camiseta, Calça", "div_l": 2,    "div_c": 2,    "mult_e": 6,    "comp": 0.60},
-    {"id": 2, "nome": "Roupa Grossa","exemplos": "Moletom, Jaqueta", "div_l": 2,    "div_c": 3,    "mult_e": 6,    "comp": 0.65},
-    {"id": 3, "nome": "Roupa Íntima & Meia","exemplos": "Sutiã, Meia", "div_l": 2,    "div_c": 4,    "mult_e": 8,    "comp": 0.50},
+    {"id": 1, "nome": "Roupa Leve","exemplos": "Camiseta, Calça", "div_l": 2,"div_c": 2,"mult_e": 6,"comp": 0.60},
+    {"id": 2, "nome": "Roupa Grossa","exemplos": "Moletom, Jaqueta", "div_l": 2,"div_c": 3,"mult_e": 6,"comp": 0.65},
+    {"id": 3, "nome": "Roupa Íntima & Meia","exemplos": "Sutiã, Meia", "div_l": 2,"div_c": 4,"mult_e": 8,"comp": 0.50},
 ]
 
 CASAEBANHO = [
@@ -23,10 +23,10 @@ CALCADO = [
     # fator_l = multiplicador de largura_pé para largura da caixa (comporta o par)
     # folga_c = folga de comprimento (cm)
     # alt_f   = altura final da caixa (cm, antes de comprimir)
-    {"id": 1, "nome": "Chinelo/Sandália","exemplos": "Havaiana, rasteirinha", "cano": 2, "fator_l": 2.2, "folga_c": 2, "alt_f": 6,  "comp": 0.60},
-    {"id": 2, "nome": "Tênis cano baixo/Sapatilha/Sapato Social", "exemplos": "Scarpin, All Star","cano": 15, "fator_l": 2.4, "folga_c": 3, "alt_f": 10, "comp": 0.65},
-    {"id": 3, "nome": "Tênis cano médio/Bota cano médio","exemplos": "Coturno, Air Jordan",   "cano": 35, "fator_l": 2.6, "folga_c": 4, "alt_f": 16, "comp": 0.50},
-    {"id": 4, "nome": "Tênis cano alto/Bota cano alto", "exemplos": "Montaria",              "cano": 55, "fator_l": 2.8, "folga_c": 5, "alt_f": 24, "comp": 0.60},
+    {"id": 1, "nome": "Chinelo/Sandália","exemplos": "Havaiana, rasteirinha", "cano": 2, "fator_l": 2.2, "folga_c": 2, "alt_f": 6},
+    {"id": 2, "nome": "Tênis cano baixo/Sapatilha/Sapato Social", "exemplos": "Scarpin, All Star","cano": 15, "fator_l": 2.4, "folga_c": 3, "alt_f": 10},
+    {"id": 3, "nome": "Tênis cano médio/Bota cano médio","exemplos": "Coturno, Air Jordan",   "cano": 35, "fator_l": 2.6, "folga_c": 4, "alt_f": 16},
+    {"id": 4, "nome": "Tênis cano alto/Bota cano alto", "exemplos": "Montaria",              "cano": 55, "fator_l": 2.8, "folga_c": 5, "alt_f": 24},
 ]
 
 ELETRONICOS = [
@@ -105,8 +105,19 @@ def main():
         if categoria == "Sair":
             print("Encerrando. Até logo!")
             break
-
+        
         sub = selecionar_subcategoria(subs)
+
+        sabe_produto = input("Sabe o nome do produto? (S - sim; N - não):")
+        if sabe_produto.lower() == "s":
+            nome_produto = input("Digite o nome do produto: ")
+        else:
+            nome_produto = chama_api_llm(categoria, sub)
+        
+    dimensoes = chama_api_ml(nome_produto)
+    
+    if dimensoes is None:
+        #chama API LLM para estimar cada uma
 
 if __name__ == "__main__":
     main()

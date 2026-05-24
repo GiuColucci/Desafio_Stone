@@ -51,3 +51,5 @@ def redimendiona2(altura,largura,comprimento,subcategoria):
         "Largura embalado": round(larg_ajustada,2),
         "Comprimento embalado": round(comp_ajustado,2)
     }
+
+
