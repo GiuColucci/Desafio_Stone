@@ -1,8 +1,9 @@
-
 '''
 Algoritmo que atende as categorias: Vestuário, Casa & Banho e Brinquedos & Jogos de Tabuleiro
 
 '''
+MIN_ALTURA_CM = 1.0
+MARGEM_ALTURA_CM = 1.5
 def redimensiona1(comprimento,largura,altura,subcategoria):
     comp_ajustado = comprimento / subcategoria["div_c"]
     larg_ajustada = largura     / subcategoria["div_l"]

@@ -1,6 +1,8 @@
 '''
 Cliente seleciona a categoria do produto e a subcategoria
 '''
+from busca_apis import chama_api_llm, chama_api_llm_dimensoes, chama_api_ml
+from acha_caixa_otima import calcula_peso_cubado
 
 ## Dicionário categorias
 VESTUARIO = [
@@ -108,16 +110,16 @@ def main():
         
         sub = selecionar_subcategoria(subs)
 
-        sabe_produto = input("Sabe o nome do produto? (S - sim; N - não):")
+        sabe_produto = input("Sabe o nome do produto? (S - sim; N - não): ")
         if sabe_produto.lower() == "s":
             nome_produto = input("Digite o nome do produto: ")
         else:
             nome_produto = chama_api_llm(categoria, sub)
         
-    dimensoes = chama_api_ml(nome_produto)
-    
-    if dimensoes is None:
-        #chama API LLM para estimar cada uma
+        if nome_produto:
+            dimensoes = chama_api_llm_dimensoes(nome_produto, categoria, sub)
+            calcula_peso_cubado(dimensoes)
+        else: print("Nome do produto não encontrado.")
 
 if __name__ == "__main__":
     main()
