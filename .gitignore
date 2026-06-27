@@ -1,0 +1,11 @@
+# Segredos — nunca versionar
+.env
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
