@@ -1,6 +1,8 @@
 # Desafio Stone: identificação de produto e caixa ideal de envio com LLM
 
-> Projeto desenvolvido durante a **graduação em Inteligência Artificial na PUC-Rio**, como resposta a um desafio de logística de e-commerce.
+> Projeto desenvolvido em equipe durante a **graduação em Inteligência Artificial na PUC-Rio**, como resposta a um desafio de logística de e-commerce.
+>
+> **Minha contribuição:** desenvolvimento do backend, com foco nos algoritmos de dimensionamento e de seleção de caixa, e na preparação da apresentação final.
 
 Dada a descrição (texto ou foto) de um produto, o sistema descobre o que ele é, estima as dimensões da embalagem e indica a menor caixa padrão dos Correios em que ele cabe.
 
