@@ -57,6 +57,22 @@ A chave vem do [Google AI Studio](https://aistudio.google.com/apikey). O arquivo
 - **Heurísticas por subcategoria:** roupa dobra e comprime, calçado precisa de folga, eletrônico leva proteção. Cada uma tem seus fatores numa tabela, fácil de ajustar.
 - **Caixas padronizadas:** usa o catálogo de embalagens recomendadas dos Correios, o que torna o resultado utilizável na prática.
 
+## Resultados
+
+Gráficos da apresentação final do projeto.
+
+**Erro de estimativa das LLMs por categoria.** Esportivos, calçados, vestuário e eletrodomésticos ficam dentro do limite aceitável (até 15%); móveis, eletrônicos e brinquedos apresentam falhas sistemáticas.
+
+![Erro de estimativa por categoria](docs/imagens/erro_estimativa_por_categoria.png)
+
+**Busca da LLM por nome do produto** (120 produtos testados).
+
+![Busca da LLM em 120 produtos](docs/imagens/busca_llm_120_produtos.png)
+
+**Chamadas à LLM vs. consultas ao banco de dados local** (simulação com 1.000 usuários ao longo de 22 dias).
+
+![Carga LLM vs banco de dados](docs/imagens/carga_llm_vs_banco_de_dados.png)
+
 ## Próximos passos
 
 - Testes automatizados para os algoritmos de embalagem.
